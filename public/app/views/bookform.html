@@ -1,0 +1,29 @@
+<h2>{{ title}}</h2>
+<form class="form-horizontal" ng-submit="saveBook()" name="formBook">
+  <div class="form-group">
+    <label for="name" class="col-sm-2 control-label">Book Name</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="name" 
+      	ng-model="Book.name" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="published_date" class="col-sm-2 control-label">Published Date</label>
+    <div class="col-sm-6">
+      <input placeholder="YYYY/MM/DD" type="text" class="form-control" id="published_date" ng-model="Book.published_date"  name="published_date" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="category_id" class="col-sm-2 control-label">Category</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="category_id" autocomplete="off" 
+      	ng-model="Book.category_id" uib-typeahead="category as category.category_name for category in categories | filter:$viewValue | limitTo:3" typeahead-loading="loadingLocations" typeahead-no-results="noResults" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">{{ button }}</button>
+    </div>
+  </div>
+</form>
+{{ ResponseDetails }}
