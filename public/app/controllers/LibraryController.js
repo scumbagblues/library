@@ -119,7 +119,6 @@ angular.module('library')
   		};
 	})
 	.controller('ModalchangeStatusBookCtrl',function($scope,$uibModalInstance,$http,bookId,userId,UserResource,BookResource){
-		//console.log(bookId,userId,users);
 		var users = UserResource.query();
 		var user;
 		if(userId <= 0){
