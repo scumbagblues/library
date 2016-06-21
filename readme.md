@@ -1,6 +1,6 @@
 # Library Application
 
-I use laravel homestead for this develop. Vagrant, angularjs and bootstrap and laravel 5.2 in the backend. 
+I used laravel homestead for this develop. Vagrant, angularjs and bootstrap and laravel 5.2 in the backend. 
 
 1.- Install NPM
 
