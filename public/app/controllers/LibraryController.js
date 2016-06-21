@@ -48,21 +48,23 @@ angular.module('library')
 
 	//First query 
 	$scope.books = BookResource.query();
+	
 	//Pagination stuff
 	$scope.itemsPerPage = 10
   	$scope.currentPage = 1;
   	$scope.pageCount = function () {
     	return Math.ceil($scope.books.length / $scope.itemsPerPage);
   	};
-  	
+
   	$scope.books.$promise.then(function () {
     $scope.totalItems = $scope.books.length;
     $scope.$watch('currentPage + itemsPerPage', function() {
       var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
         end = begin + $scope.itemsPerPage;
-	  $scope.filteredBooks = $scope.books.slice(begin, end);
-    });
-  });
+	  	$scope.filteredBooks = $scope.books.slice(begin, end);
+      });
+  	});
+  	/**END of pagination stuff**/
 	//Availabilty row
 	$scope.showAvailability = function(user_id){
 		if(user_id > 0){
