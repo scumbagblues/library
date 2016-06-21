@@ -22,6 +22,25 @@ angular.module('library')
 	    });
 	};
 
+	$scope.changeStatus = function(book_id,user_id){
+		 var modalInstanceForBookStatus = $uibModal.open({
+	      templateUrl: 'changeStatusBook.html',
+	      controller: 'ModalchangeStatusBookCtrl',
+	      resolve: {
+		      bookId: function () {
+		          return book_id;
+		      },
+		      userId: function () {
+		          return user_id;
+		      },
+	      }
+	    });
+		
+		modalInstanceForBookStatus.result.then(function () {
+	      //console.log(bookId,userId);
+	    }); 
+	};
+
 	$scope.books = BookResource.query();
 	$scope.showAvailability = function(user_id){
 		if(user_id > 0){
@@ -90,6 +109,28 @@ angular.module('library')
 	})
 	.controller('ModalDeleteBookCtrl',function($scope,$uibModalInstance){
 		$scope.deleteBook = function () {
+		   $uibModalInstance.close($scope.ResponseDetails);
+		};
+
+  		$scope.cancel = function () {
+    	   $uibModalInstance.dismiss('cancel');
+  		};
+	})
+	.controller('ModalchangeStatusBookCtrl',function($scope,$uibModalInstance,bookId,userId,UserResource,BookResource){
+		//console.log(bookId,userId,users);
+		var users = UserResource.query();
+		var user;
+		if(userId <= 0){
+			$scope.bookFree = "This book is available, Do you want assign?";
+		}
+
+		$scope.users = users;
+		$scope.selectUser = function(user_id) {
+		    console.log(bookId,user_id);
+		    user = user_id;
+		};		
+		//Functions from modal buttons
+		$scope.changeUser = function () {
 		   $uibModalInstance.close($scope.ResponseDetails);
 		};
 

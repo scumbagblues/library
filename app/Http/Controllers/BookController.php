@@ -94,4 +94,15 @@ class BookController extends Controller
             return response()->json(["message" => "The Book was not deleted"]);
         }
     }
+
+    public function updateUserBook(Request $request){
+        $bookData = $request->all();
+        $update = Book::where('book_id',$id)->update($bookData);
+        
+        if($update){
+            return response()->json(["message" => "Book updated"]);   
+        }else{
+            return response()->json(["message" => "Error with the update"]);   
+        }
+    }
 }

@@ -16,6 +16,6 @@ Route::get('/', function () {
 });
 
 Route::resource('api/book','BookController');
-
 Route::resource('api/category','CategoryController');
+Route::resource('api/user','UserController');
 
