@@ -16,14 +16,18 @@
         <h3 class="modal-title">Book Status</h3>
     </div>
     <div class="modal-body">
+      <div ng-hide="bookAvailability()">
       <h4>{{bookFree}}</h4>
 	    <label for="repeatSelect"> Choose user: </label>
-	   	<select ng-change="selectUser(userList.user_id)" ng-model="userList" ng-options="user as user.name for user in users">           
+	   	<select ng-model="userList" ng-options="user as user.name for user in users">           
     	</select>
-    <p>Ordered by: {{userList.user_id}}</p>
+      </div>
+      <div ng-show="bookAvailability()">
+      	<h4>This book is not available</h4>
+      </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="changeUser()">OK</button>
+        <button class="btn btn-primary" type="button" ng-click="changeUser(userList.user_id)" ng-hide="bookAvailability()">OK</button>
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     </div>            
 </script>
@@ -46,7 +50,7 @@
 			<thead>
 				<th>Book ID</th>
 				<th>Book Name</th>
-				<th>Pusblished Date</th>
+				<th>Published Date</th>
 				<th>Category</th>
 				<th>Available</th>
 				<th></th>

@@ -7,6 +7,7 @@ use App\Http\Requests;
 
 use App\Book;
 use App\Category;
+use DB;
 
 
 class BookController extends Controller
@@ -95,12 +96,14 @@ class BookController extends Controller
         }
     }
 
-    public function updateUserBook(Request $request){
-        $bookData = $request->all();
-        $update = Book::where('book_id',$id)->update($bookData);
-        
-        if($update){
-            return response()->json(["message" => "Book updated"]);   
+    public function updatebookstatus($bookId,$userId){
+        $update_status = ['user_id' => $userId];
+        $flag_update = DB::table('books')
+                        ->where('book_id', $bookId)
+                        ->update($update_status);
+
+        if($flag_update){
+            return response()->json(["message" => "Book status updated"]);   
         }else{
             return response()->json(["message" => "Error with the update"]);   
         }

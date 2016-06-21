@@ -37,7 +37,9 @@ angular.module('library')
 	    });
 		
 		modalInstanceForBookStatus.result.then(function () {
-	      //console.log(bookId,userId);
+	      	$timeout(function(){
+				$scope.books = BookResource.query();
+		  	},500);
 	    }); 
 	};
 
@@ -116,7 +118,7 @@ angular.module('library')
     	   $uibModalInstance.dismiss('cancel');
   		};
 	})
-	.controller('ModalchangeStatusBookCtrl',function($scope,$uibModalInstance,bookId,userId,UserResource,BookResource){
+	.controller('ModalchangeStatusBookCtrl',function($scope,$uibModalInstance,$http,bookId,userId,UserResource,BookResource){
 		//console.log(bookId,userId,users);
 		var users = UserResource.query();
 		var user;
@@ -124,13 +126,24 @@ angular.module('library')
 			$scope.bookFree = "This book is available, Do you want assign?";
 		}
 
+		$scope.bookAvailability = function(){
+			if(userId > 0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
 		$scope.users = users;
-		$scope.selectUser = function(user_id) {
-		    console.log(bookId,user_id);
-		    user = user_id;
-		};		
 		//Functions from modal buttons
-		$scope.changeUser = function () {
+		$scope.changeUser = function (user_selected) {
+			//console.log(bookId,user_selected);
+			if(user_selected !== undefined){
+				$http.get('/api/book/updatebookstatus/'+ bookId + '/' + user_selected).
+				success(function(data, status, headers, config) {
+					 console.log(data);
+				});
+			}
 		   $uibModalInstance.close($scope.ResponseDetails);
 		};
 

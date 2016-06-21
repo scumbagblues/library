@@ -32,7 +32,7 @@ CREATE TABLE `books` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`book_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES (1,'Soy Leyenda','1977/01/01',4,1,'2016-06-20 23:31:30','2016-06-20 23:31:30',NULL),(2,'El Resplandor','1977/01/01',6,2,'2016-06-20 23:31:56','2016-06-20 23:31:56',NULL),(3,'Yo Robot','1987/12/12',4,0,'2016-06-20 23:32:11','2016-06-20 23:32:11',NULL),(4,'Colosio','1998/05/05',5,0,'2016-06-20 23:32:29','2016-06-20 23:32:29',NULL);
+INSERT INTO `books` VALUES (1,'Soy Leyenda','1977/01/01',4,1,'2016-06-20 23:31:30','2016-06-20 23:31:30',NULL),(2,'El Resplandor','1977/01/01',6,0,'2016-06-20 23:31:56','2016-06-20 23:31:56',NULL),(3,'Yo Robot','1987/12/12',4,0,'2016-06-20 23:32:11','2016-06-20 23:32:11',NULL),(4,'Colosio','1998/05/05',5,0,'2016-06-20 23:32:29','2016-06-20 23:32:29',NULL),(5,'Carrie','1998/05/05',6,0,'2016-06-21 19:50:06','2016-06-21 19:50:06',NULL),(6,'IT','1977/01/01',6,0,'2016-06-21 20:08:45','2016-06-21 20:08:45',NULL),(7,'Cien años de soledad','1982/10/10',8,3,'2016-06-21 20:12:25','2016-06-21 20:12:25',NULL);
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `categories` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (4,'Ciencia Ficción','2016-06-18 17:53:39','2016-06-18 17:53:39',NULL),(5,'Politica','2016-06-18 17:53:39','2016-06-18 17:53:39',NULL),(6,'Terror','2016-06-18 17:53:39','2016-06-18 17:53:39',NULL);
+INSERT INTO `categories` VALUES (4,'Ciencia Ficción','2016-06-18 17:53:39','2016-06-18 17:53:39',NULL),(5,'Politica','2016-06-18 17:53:39','2016-06-18 17:53:39',NULL),(6,'Terror','2016-06-18 17:53:39','2016-06-18 17:53:39',NULL),(7,'Suspenso','2016-06-18 17:53:39','2016-06-18 17:53:39',NULL),(8,'Arte','2016-06-18 17:53:39','2016-06-18 17:53:39',NULL),(9,'Biografías','2016-06-18 17:53:39','2016-06-18 17:53:39',NULL);
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,4 +131,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-06-21  3:24:41
+-- Dump completed on 2016-06-21 20:17:21

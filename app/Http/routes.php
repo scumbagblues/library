@@ -18,4 +18,5 @@ Route::get('/', function () {
 Route::resource('api/book','BookController');
 Route::resource('api/category','CategoryController');
 Route::resource('api/user','UserController');
+Route::get('api/book/updatebookstatus/{id}/{userid}','BookController@updatebookstatus');
 
