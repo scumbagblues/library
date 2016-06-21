@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('library')
-	.controller('IndexBookCtrl', function($scope,$location,$timeout,BookResource,$uibModal){
+	.controller('IndexBookCtrl', function($scope,$location,$route,$timeout,BookResource,$uibModal){
 	//$scope.datePattern=/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/i
 	
 	/**DELETE MODAL FUNCTIONALLITY**/
@@ -19,7 +19,7 @@ angular.module('library')
 	    modalInstance.result.then(function () {
 	      var result = BookResource.delete({id:bookId});
 	      $timeout(function(){
-			$scope.books = BookResource.query();
+			 $route.reload();//Force to reload the scope NOT the page
 		  },500);
 	    });
 	};
@@ -41,7 +41,7 @@ angular.module('library')
 		
 		modalInstanceForBookStatus.result.then(function () {
 	      	$timeout(function(){
-				$scope.books = BookResource.query();
+				 $route.reload();
 		  	},500);
 	    }); 
 	};
