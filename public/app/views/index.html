@@ -56,7 +56,7 @@
 				<th></th>
 			</thead>
 			<tbody>
-				<tr ng-repeat="book in books | filter: search">
+				<tr ng-repeat="book in filteredBooks | filter: search">
 					<td>{{ book.book_id}}</td>
 					<td>{{ book.name}}</td>
 					<td>{{ book.published_date}}</td>
@@ -75,5 +75,11 @@
 				</tr>
 			</tbody>
 		</table>
+		 <uib-pagination total-items="totalItems" items-per-page="itemsPerPage" ng-model="currentPage" ng-change="pageChanged()"></uib-pagination>
+	      <p>
+	      total Items: {{totalItems}}<br />
+	      Items per page: {{itemsPerPage}}<br />
+	      Current Page: {{currentPage}}
+	      </p>
 	</div>
 </div>

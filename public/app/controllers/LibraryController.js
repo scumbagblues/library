@@ -3,6 +3,8 @@
 angular.module('library')
 	.controller('IndexBookCtrl', function($scope,$location,$timeout,BookResource,$uibModal){
 	//$scope.datePattern=/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/i
+	
+	/**DELETE MODAL FUNCTIONALLITY**/
 	$scope.removeBook = function(bookId){
 		var modalInstance = $uibModal.open({
 	      templateUrl: 'deletebook.html',
@@ -22,6 +24,7 @@ angular.module('library')
 	    });
 	};
 
+	/**CHANGE STATUS MODAL FUNCTIONALLITY**/
 	$scope.changeStatus = function(book_id,user_id){
 		 var modalInstanceForBookStatus = $uibModal.open({
 	      templateUrl: 'changeStatusBook.html',
@@ -43,7 +46,24 @@ angular.module('library')
 	    }); 
 	};
 
+	//First query 
 	$scope.books = BookResource.query();
+	//Pagination stuff
+	$scope.itemsPerPage = 10
+  	$scope.currentPage = 1;
+  	$scope.pageCount = function () {
+    	return Math.ceil($scope.books.length / $scope.itemsPerPage);
+  	};
+  	
+  	$scope.books.$promise.then(function () {
+    $scope.totalItems = $scope.books.length;
+    $scope.$watch('currentPage + itemsPerPage', function() {
+      var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
+        end = begin + $scope.itemsPerPage;
+	  $scope.filteredBooks = $scope.books.slice(begin, end);
+    });
+  });
+	//Availabilty row
 	$scope.showAvailability = function(user_id){
 		if(user_id > 0){
 			$scope.availability = 'No';
